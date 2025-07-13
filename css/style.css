@@ -501,11 +501,11 @@ nav .wrapper {
 .hero-slider {
   width: 100%;
   background: rgb(243, 233, 233);
-  transform: translateX(-100%);
+
   cursor: pointer;
 }
 .hero-item {
-  opacity: 0;
+  opacity: 1;
   transition: 2s linear;
 }
 
@@ -532,10 +532,7 @@ nav .wrapper {
   transform: translateX(100%);
   margin: 0;
 }
-.hero-item-active {
-  opacity: 1;
-  transform: translateX(0);
-}
+
 .payer-clock {
   width: 100%;
   height: 540px;
