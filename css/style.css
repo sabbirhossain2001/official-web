@@ -314,8 +314,8 @@ nav .wrapper {
     padding: 0;
     height: 0;
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+   left: 50%;
+    transform: translateX(-50%);
     max-width: 50rem;
     background-color: var(--white);
     overflow-y: scroll;
