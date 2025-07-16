@@ -1,3 +1,24 @@
+const notices = [
+        {
+          img: "../images/software.gif",
+          title: "Notice 1 - School Closure",
+          short: "School will be closed on July 16.",
+          full: "Due to a national holiday, the school will remain closed on July 16. Classes will resume the next day.",
+        },
+        {
+          img: "../images/girl_3.gif",
+          title: "Notice 2 - Exam Routine",
+          short: "Exam schedule has been published.",
+          full: "The exam routine for mid-terms has been published. Please collect it from the notice board or download it from the website.",
+        },
+        {
+          img: "../images/ecommerce (1).gif",
+          title: "Notice 3 - Admission Open",
+          short: "Admission for 2025 is now open.",
+          full: "We are accepting applications for the new academic year 2025. Visit the school office or website to apply.",
+        },
+        
+      ];
 const openBtn = document.querySelector('.open-btn');
 const navlist = document.querySelector('.nav-list');
 const closeBtn = document.querySelector('.close-btn');
@@ -12,6 +33,35 @@ closeBtn.addEventListener('click',()=>{
     
    
 });
+
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll("ul.nav-list > li").forEach(li => {
+    const parentLink = li.querySelector(".nav-link.desktop-item") || li.querySelector(".nav-link");
+    const submenuLinks = li.querySelectorAll("ul li a");
+
+    let isMatched = false;
+
+    submenuLinks.forEach(sub => {
+      const subHref = sub.getAttribute("href");
+      if (subHref && subHref === currentPage) {
+        isMatched = true;
+      }
+    });
+
+    // Highlight parent if any sublink matches
+    if (isMatched && parentLink) {
+      parentLink.classList.add("active");
+    }
+
+    // Also highlight if this is a regular top-level link
+    if (!isMatched && parentLink && parentLink.getAttribute("href") === currentPage) {
+      parentLink.classList.add("active");
+    }
+  });
+
+
+   
 const navBar = document.querySelector('.nav');
 window.addEventListener('scroll',function(){
     const scrollHeight = window.pageYOffset;
@@ -101,6 +151,8 @@ recentProject.forEach(function(item){
         item.classList.remove('single-project-active');
     }
 })
+
+
 //===============EC Member section animation==============
 const ecMembers = document.querySelectorAll(".testimonials-single-item");
 ecMembers.forEach(function(item){
@@ -128,6 +180,21 @@ footerSingleItem.forEach(function(box){
     }
 });
 }
+   const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    // Show button after scrolling down 200px
+    window.addEventListener("scroll", () => {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    });
+
+    // Scroll smoothly to top on button click
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 //tab-section 
  const tabButtons = document.querySelectorAll(".tab-btn");
       const tabContents = document.querySelectorAll(".tab-content");
@@ -141,4 +208,58 @@ footerSingleItem.forEach(function(box){
           document.getElementById(button.dataset.tab).classList.add("active");
         });
       });
-var scrolltotop={setting:{startline:100,scrollto:0,scrollduration:1e3,fadeduration:[500,100]},controlHTML:'<button class="bottomToTop" ><i class="far fa-arrow-up"></i></button>',controlattrs:{offsetx:5,offsety:5},anchorkeyword:"#top",state:{isvisible:!1,shouldvisible:!1},scrollup:function(){this.cssfixedsupport||this.$control.css({opacity:0});var t=isNaN(this.setting.scrollto)?this.setting.scrollto:parseInt(this.setting.scrollto);t="string"==typeof t&&1==jQuery("#"+t).length?jQuery("#"+t).offset().top:0,this.$body.animate({scrollTop:t},this.setting.scrollduration)},keepfixed:function(){var t=jQuery(window),o=t.scrollLeft()+t.width()-this.$control.width()-this.controlattrs.offsetx,s=t.scrollTop()+t.height()-this.$control.height()-this.controlattrs.offsety;this.$control.css({left:o+"px",top:s+"px"})},togglecontrol:function(){var t=jQuery(window).scrollTop();this.cssfixedsupport||this.keepfixed(),this.state.shouldvisible=t>=this.setting.startline?!0:!1,this.state.shouldvisible&&!this.state.isvisible?(this.$control.stop().animate({opacity:1},this.setting.fadeduration[0]),this.state.isvisible=!0):0==this.state.shouldvisible&&this.state.isvisible&&(this.$control.stop().animate({opacity:0},this.setting.fadeduration[1]),this.state.isvisible=!1)},init:function(){jQuery(document).ready(function(t){var o=scrolltotop,s=document.all;o.cssfixedsupport=!s||s&&"CSS1Compat"==document.compatMode&&window.XMLHttpRequest,o.$body=t(window.opera?"CSS1Compat"==document.compatMode?"html":"body":"html,body"),o.$control=t('<div id="topcontrol">'+o.controlHTML+"</div>").css({position:o.cssfixedsupport?"fixed":"absolute",bottom:o.controlattrs.offsety,right:o.controlattrs.offsetx,opacity:0,cursor:"pointer"}).attr({title:"Scroll to Top"}).click(function(){return o.scrollup(),!1}).appendTo("body"),document.all&&!window.XMLHttpRequest&&""!=o.$control.text()&&o.$control.css({width:o.$control.width()}),o.togglecontrol(),t('a[href="'+o.anchorkeyword+'"]').click(function(){return o.scrollup(),!1}),t(window).bind("scroll resize",function(t){o.togglecontrol()})})}};scrolltotop.init();
+// policy tab section 
+const policytabButtons = document.querySelectorAll(".policy-tab-btn");
+const policytabPanels = document.querySelectorAll(".policy-tab-panel");
+
+      policytabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active from all
+          policytabButtons.forEach((btn) => btn.classList.remove("active-tab"));
+          policytabPanels.forEach((panel) => panel.classList.remove("active-panel"));
+
+          // Add active to selected
+          button.classList.add("active-tab");
+          const targetId = button.getAttribute("data-target");
+          document.getElementById(targetId).classList.add("active-panel");
+        });
+      });
+
+// Load Notice Cards
+      const noticeList = document.getElementById("noticeList");
+      notices.forEach((notice, index) => {
+        const card = document.createElement("div");
+        card.className = "notice-item";
+        card.innerHTML = `
+        <div class="notice-img">
+          <img src="${notice.img}" alt="noticeImg" />
+        </div>
+        <div class="notice-content">
+          <p>${notice.short}</p>
+          <button class="notice-btn" onclick="openModal(${index})">Read More</button>
+        </div>
+      `;
+        noticeList.appendChild(card);
+      });
+
+      // Modal Functions
+      function openModal(index) {
+        const notice = notices[index];
+        document.getElementById("modalImage").src = notice.img;
+        document.getElementById("modalTitle").textContent = notice.title;
+        document.getElementById("modalText").textContent = notice.full;
+        document.getElementById("modal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+      }
+
+      // Close modal on outside click
+      window.onclick = function (event) {
+        const modal = document.getElementById("modal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+    

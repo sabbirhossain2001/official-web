@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./images/icon.ico" type="image/png" />
+    <link rel="shortcut icon" href="./images/logo.png" type="image/png" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -12,8 +12,8 @@
       crossorigin="anonymous"
     />
 
-    <title>Mirpur DOHS Porishod</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Mirpur DOHS PORISHOD</title>
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <nav class="nav">
@@ -32,9 +32,9 @@
               ><i class="fas fa-times"></i
             ></label>
           </div>
-          <li><a class="active nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="index.html">Home</a></li>
           <li>
-            <a class="nav-link desktop-item" href="index.html"
+            <a class="nav-link desktop-item" href="#"
               >About<span class="down-icon"
                 ><i class="fas fa-chevron-down"></i
               ></span>
@@ -47,12 +47,10 @@
               <li><a href="about.html">About us</a></li>
               <li><a href="ec-member.html">EC Members</a></li>
               <li><a href="team-member.html">Team Members</a></li>
-              <li><a href="">Testimonials</a></li>
-              <li><a href="">Event & Ocations</a></li>
             </ul>
           </li>
           <li>
-            <a class="nav-link desktop-item" href="index.html"
+            <a class="nav-link desktop-item" href="#"
               >Meetings<span class="down-icon"
                 ><i class="fas fa-chevron-down"></i
               ></span>
@@ -65,11 +63,10 @@
             <ul class="drop-menu3">
               <li><a href="ec-meeting.html">EC Meetings</a></li>
               <li><a href="agm.html">AGM</a></li>
-              <li><a href="">GM</a></li>
             </ul>
           </li>
 
-          <li>
+          <!-- <li>
             <a class="nav-link desktop-item" href="index.html"
               >Services<span class="down-icon"
                 ><i class="fas fa-chevron-down"></i
@@ -77,87 +74,44 @@
             </a>
             <input type="checkbox" id="showdrop1" />
             <label for="showdrop1" class="mobile-item"
-              >Services
-              <span class="plus-icon"><i class="fas fa-plus"></i></span
-            ></label>
+              >Services  <span class="plus-icon"><i class="fas fa-plus"></i></span
+                ></label>
             <ul class="drop-menu1">
               <li><a href="services.html">All Services</a></li>
               <li><a href="">Acknowledgement Certificate</a></li>
               <li><a href="">Tenent Registration</a></li>
               <li><a href="">Beautification</a></li>
               <li><a href="">Emergency Medical</a></li>
+              
             </ul>
-          </li>
+          </li> -->
+          <li><a class="nav-link" href="helpline.html">Helpline</a></li>
+          <li><a class="nav-link" href="policy.html">Policy</a></li>
           <li><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li><a class="nav-link" href="notice.html">Notice</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
         <label for="" class="open-btn"><i class="fas fa-bars"></i></label>
       </div>
     </nav>
-    <section class="project-page">
-      <h3>Our Services</h3>
-      <ul>
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-        <li>
-          <a href="project.html"> > </a>
-        </li>
-        <li>
-          <a href="project.html">Services</a>
-        </li>
-      </ul>
-    </section>
-    <section class="services-section">
+
+    <!-- Notice SECTION -->
+    <section class="notice-section">
       <div class="container">
-        <div class="section-title">
-          <span class="sub-title">
-            <img src="./images/star-icon.png" alt="startIcon" />
-            OUR SERVICES
-          </span>
-          <h2>What We Offer?</h2>
-          <p>
-            We are the best Technology service provider company near to you.
-            Check out our popular and best services below.
-          </p>
-        </div>
-        <div class="services-items">
-          <div class="single-service">
-            <div class="service-icon">
-              <img src="./images/marketing.gif" alt="webdevelopment" />
-            </div>
-            <h3>Fully dynamic content website based on Laravel</h3>
-            <p>
-              We build dynamic websites with responsive design. We make each
-              single pages with modern design trends and our design creativity
-              so that every visitors
-            </p>
-          </div>
-          <div class="single-service">
-            <div class="service-icon">
-              <img src="./images/seo.gif" alt="app-development" />
-            </div>
-            <h3>Multi-vendor custom build e-Commerce solution</h3>
-            <p>
-              For e-Commerce platforms, Woo-commerce is the most popular choice.
-              But many people doesn't like it for ugly dashboard, less builtin
-              features and so on
-            </p>
-          </div>
-          <div class="single-service">
-            <div class="service-icon">
-              <img src="./images/ecommerce (1).gif" alt="software" />
-            </div>
-            <h3>Multi-vendor e-Commerce solutions with Wordpress</h3>
-            <p>
-              A good online business need a good e-Commerce solution. We build
-              e-Commerce website with Wordpress because of it's popularity and
-              strong community.
-            </p>
+        <h3>Our Latest Notice</h3>
+        <div id="noticeList" class="notice-items"></div>
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Notice Image" />
+            <h3 id="modalTitle"></h3>
+            <p id="modalText"></p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Footer section -->
     <section class="footer-section">
       <div class="container">
         <div class="footer-map">
@@ -165,19 +119,24 @@
         </div>
         <div class="footer-items">
           <div class="footer-single-item single-item-1">
-            <a href="#" class="footer-logo">
-              <img src="./images/logo.svg" alt="logo" />
-            </a>
+            <div class="flex">
+              <a href="#" class="footer-logo">
+                <img src="./images/logo.png" alt="" />
+              </a>
+              <h3 style="font-size: 18px; margin-top: 15px">
+                Mirpur DOHS Porishod
+              </h3>
+            </div>
             <p>
-              Our mission is to make life easier for our customers. We do it by
-              offering easy to use, fast and reliable Web, App, Software
-              development services.
+              Mirpur DOHS Porishod is dedicated to fostering a secure,
+              connected, and harmonious community for all its residents. With a
+              focus on collaboration and development, we strive to ensure a
+              thriving neighborhood enriched by shared values and mutual respect
             </p>
             <ul>
               <li>
                 <i class="fal fa-map-marker-alt"></i>
-                Total Service Point (TSP) Ltd , 5th floor , House 1332 ,
-                Rd&Avenue #2, Mirpur DOHS, Dhaka (1216) ,Bangladesh
+                Porishod Bulidding Rd:06, Mirpur DOHS, Dhaka(1216),Bangladesh
               </li>
             </ul>
             <ul class="social-link">
@@ -212,22 +171,20 @@
             <h3>Quick Links</h3>
             <ul class="footer-link-list">
               <li>
-                <a href="#">Home</a>
+                <a href="home.htm">Home</a>
               </li>
               <li>
-                <a href="#">Services</a>
+                <a href="about.html">About</a>
               </li>
               <li>
-                <a href="#">Projects</a>
+                <a href="helpline.html">Helpline</a>
+              </li>
+
+              <li>
+                <a href="notice.html">Notice</a>
               </li>
               <li>
-                <a href="#">Contact</a>
-              </li>
-              <li>
-                <a href="#">Login</a>
-              </li>
-              <li>
-                <a href="#">Register</a>
+                <a href="contact.html">Contact</a>
               </li>
             </ul>
           </div>
@@ -235,22 +192,16 @@
             <h3>Explore</h3>
             <ul class="footer-link-list">
               <li>
-                <a href="#">Blog</a>
+                <a href="agm.html">AGM</a>
               </li>
               <li>
-                <a href="#">Evemts</a>
+                <a href="ec-meeting.html">EC Meeting</a>
               </li>
               <li>
-                <a href="#">About</a>
+                <a href="gallery.html">Gallery</a>
               </li>
               <li>
-                <a href="#">Testimonials</a>
-              </li>
-              <li>
-                <a href="#">Domain registration</a>
-              </li>
-              <li>
-                <a href="#">Web hosting & servers</a>
+                <a href="policy.html">Policy</a>
               </li>
             </ul>
           </div>
@@ -260,13 +211,13 @@
               <li>
                 <a href="#">
                   <i class="fas fa-envelope"></i>
-                  smsabbir@gmail.com
+                  mirpurdohsporshod@gmail.com
                 </a>
               </li>
               <li>
                 <a href="#">
                   <i class="fas fa-phone-alt"></i>
-                  01303238290
+                  02-44806644
                 </a>
               </li>
               <li>
@@ -287,12 +238,12 @@
         <div class="footer-bottom">
           <p>
             <i class="fal fa-copyright"></i>
-            2021
-            <strong>Cellsweb IT Solutions Ltd</strong>
+            2025
+            <strong>Mirpur DOHS Porishod</strong>
           </p>
           <ul>
             <li>
-              <a href="#">Privacy Policy </a>
+              <a href="policy.html">Privacy Policy </a>
             </li>
             <li>
               <a href="#">Terms & Conditions </a>
@@ -301,6 +252,11 @@
         </div>
       </div>
     </section>
-    <script src="index.js"></script>
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Slick JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
