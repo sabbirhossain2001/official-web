@@ -326,12 +326,7 @@ nav .wrapper {
     padding: 0;
     height: 0;
     width: 90%;
-<<<<<<< HEAD
 
-=======
-   left: 50%;
-    transform: translateX(-50%);
->>>>>>> b90226b1d169e09b174fbe716291e623ed33f15a
     max-width: 50rem;
     background-color: var(--white);
     overflow-y: scroll;
@@ -454,13 +449,8 @@ nav .wrapper {
     font-size: 15px;
   }
   .wrapper .logo {
-<<<<<<< HEAD
     height: 70px;
     width: 70px;
-=======
-    height: 80px;
-    width: 80px;
->>>>>>> b90226b1d169e09b174fbe716291e623ed33f15a
   }
   .wrapper .main-logo {
     width: 100%;
