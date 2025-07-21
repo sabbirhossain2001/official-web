@@ -1770,7 +1770,7 @@ strong {
 
 .gallery-popup-close {
   position: absolute;
-  top: 8px;
+  top: 0px;
   right: 20px;
   font-size: 35px;
   font-weight: bold;
