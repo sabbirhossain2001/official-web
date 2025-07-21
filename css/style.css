@@ -114,6 +114,10 @@ select {
 .container {
   margin-inline: auto;
   width: 90%;
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 10499c6f979a6f0db047e55cac38e418db740e5f
 }
 /* Scroll to Top Button */
 #scrollTopBtn {
@@ -521,7 +525,7 @@ nav .wrapper {
 
 .slider-item {
   width: 100%;
-  height: 700px;
+  height: 800px;
   overflow: hidden;
 }
 .slider-item img {
@@ -1697,11 +1701,19 @@ strong {
 }
 
 .gallery-item {
+<<<<<<< HEAD
   flex: 1 1 calc(25% - 20px);
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+=======
+  width: 100%;
+  max-width: 350px;
+  background: white;
+  box-shadow: 0 5px 15px #efefef;
+  border-radius: 10px;
+>>>>>>> 10499c6f979a6f0db047e55cac38e418db740e5f
   cursor: pointer;
   /* transition: transform 0.2s; */
 }
