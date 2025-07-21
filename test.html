@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery Popup</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+      }
+
+      .container {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      h3 {
+        margin: 10px 0;
+      }
+
+      .gallery-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .gallery-item {
+        flex: 1 1 calc(25% - 20px);
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.02);
+      }
+
+      .gallery-img img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Popup styles */
+      .gallery-popup-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+      }
+
+      .gallery-popup-content {
+        background: #fff;
+        padding: 30px;
+        width: 90%;
+        max-width: 1100px;
+        border-radius: 10px;
+        position: relative;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .gallery-popup-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        z-index: 10001;
+      }
+
+      .gallery-popup-grid {
+        flex: 1;
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+        gap: 15px;
+        margin-top: 50px;
+        padding-right: 5px;
+      }
+
+      .gallery-popup-grid img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-item {
+          flex: 1 1 calc(50% - 20px);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .gallery-item {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="gallery-section">
+      <div class="container">
+        <h3>Mirpur DOHS Porishod Gallery</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum,
+          iure.
+        </p>
+        <div class="gallery-items" id="galleryList">
+          <!-- Gallery will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="galleryPopup" class="gallery-popup-modal">
+      <div class="gallery-popup-content">
+        <span class="gallery-popup-close" onclick="closeGalleryPopup()"
+          >&times;</span
+        >
+        <h3 id="popupTitle"></h3>
+        <div class="gallery-popup-grid" id="popupImageContainer">
+          <!-- Images will be added here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Gallery data
+      const galleryData = [
+        {
+          title: "AGM Program 2025",
+          images: [
+            "./images/AGM/01.JPG",
+            "./images/AGM/02.JPG",
+            "./images/AGM/03.JPG",
+            "./images/AGM/04.JPG",
+            "./images/AGM/05.JPG",
+            "./images/AGM/06.JPG",
+            "./images/AGM/07.JPG",
+            "./images/AGM/08.JPG",
+          ],
+        },
+        {
+          title: "Sports Day 2025",
+          images: [
+            "./images/sports/01.JPG",
+            "./images/sports/02.JPG",
+            "./images/sports/03.JPG",
+            "./images/sports/04.JPG",
+          ],
+        },
+        {
+          title: "Cultural Night 2025",
+          images: [
+            "./images/cultural/01.JPG",
+            "./images/cultural/02.JPG",
+            "./images/cultural/03.JPG",
+          ],
+        },
+      ];
+
+      // Render gallery
+      const galleryList = document.getElementById("galleryList");
+
+      galleryData.forEach((event, index) => {
+        const item = document.createElement("div");
+        item.className = "gallery-item";
+        item.innerHTML = `
+        <div class="gallery-img" onclick="openGalleryPopup(${index})">
+          <img src="${event.images[0]}" alt="${event.title}">
+        </div>
+        <h3 onclick="openGalleryPopup(${index})">${event.title}</h3>
+      `;
+        galleryList.appendChild(item);
+      });
+
+      // Open popup
+      function openGalleryPopup(index) {
+        const popup = document.getElementById("galleryPopup");
+        const title = document.getElementById("popupTitle");
+        const container = document.getElementById("popupImageContainer");
+
+        const event = galleryData[index];
+        title.textContent = event.title;
+        container.innerHTML = "";
+
+        event.images.forEach((src) => {
+          const img = document.createElement("img");
+          img.src = src;
+          container.appendChild(img);
+        });
+
+        popup.style.display = "flex";
+      }
+
+      // Close popup
+      function closeGalleryPopup() {
+        document.getElementById("galleryPopup").style.display = "none";
+      }
+
+      // Close when clicking outside the content
+      document
+        .getElementById("galleryPopup")
+        .addEventListener("click", function (e) {
+          const content = document.querySelector(".gallery-popup-content");
+          if (!content.contains(e.target)) {
+            closeGalleryPopup();
+          }
+        });
+    </script>
+  </body>
+</html>

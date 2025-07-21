@@ -1,20 +1,20 @@
 const notices = [
         {
           img: "../images/software.gif",
-          title: "Notice 1 - School Closure",
-          short: "School will be closed on July 16.",
+          title: "Executive Committee Election",
+          short: " Executive Committee-2025 এর নির্বাচন",
           full: "Due to a national holiday, the school will remain closed on July 16. Classes will resume the next day.",
         },
         {
           img: "../images/girl_3.gif",
-          title: "Notice 2 - Exam Routine",
-          short: "Exam schedule has been published.",
+          title: "অফিস সমূহের নতুন সার্ভিস চার্য ",
+          short: "অফিস সমূহের নতুন সার্ভিস চার্য  ",
           full: "The exam routine for mid-terms has been published. Please collect it from the notice board or download it from the website.",
         },
         {
           img: "../images/ecommerce (1).gif",
-          title: "Notice 3 - Admission Open",
-          short: "Admission for 2025 is now open.",
+          title: "সিকিউরিটি গার্ড নিয়োগ ",
+          short: "সিকিউরিটি গার্ড নিয়োগ বিজ্ঞপ্তি ২০২৫",
           full: "We are accepting applications for the new academic year 2025. Visit the school office or website to apply.",
         },
         
@@ -152,7 +152,18 @@ recentProject.forEach(function(item){
     }
 })
 
-
+//===============helpline section animation==============
+const helplineitems = document.querySelectorAll(".helpline-item");
+helplineitems.forEach(function(item){
+    const helplineitem = item.getBoundingClientRect().top;
+    const helplineitemScreen = window.innerHeight /1.2;
+    if(helplineitem < helplineitemScreen){
+        item.classList.add('helplineitem-active');
+    }
+    else{
+        item.classList.remove('helplineitem-active');
+    }
+})
 //===============EC Member section animation==============
 const ecMembers = document.querySelectorAll(".testimonials-single-item");
 ecMembers.forEach(function(item){
@@ -228,38 +239,38 @@ const policytabPanels = document.querySelectorAll(".policy-tab-panel");
 // Load Notice Cards
       const noticeList = document.getElementById("noticeList");
       notices.forEach((notice, index) => {
-        const card = document.createElement("div");
-        card.className = "notice-item";
-        card.innerHTML = `
+        const noticeCard = document.createElement("div");
+        noticeCard.className = "notice-item";
+        noticeCard.innerHTML = `
         <div class="notice-img">
           <img src="${notice.img}" alt="noticeImg" />
         </div>
         <div class="notice-content">
           <p>${notice.short}</p>
-          <button class="notice-btn" onclick="openModal(${index})">Read More</button>
+          <button class="notice-btn" onclick="noticeModalOpen(${index})">Read More</button>
         </div>
       `;
-        noticeList.appendChild(card);
+        noticeList.appendChild(noticeCard);
       });
 
       // Modal Functions
-      function openModal(index) {
+      function noticeModalOpen (index) {
         const notice = notices[index];
         document.getElementById("modalImage").src = notice.img;
         document.getElementById("modalTitle").textContent = notice.title;
         document.getElementById("modalText").textContent = notice.full;
-        document.getElementById("modal").style.display = "flex";
+        document.getElementById("noticeModal").style.display = "flex";
       }
 
-      function closeModal() {
-        document.getElementById("modal").style.display = "none";
+      function noticeCloseModal() {
+        document.getElementById("noticeModal").style.display = "none";
       }
 
       // Close modal on outside click
       window.onclick = function (event) {
-        const modal = document.getElementById("modal");
-        if (event.target === modal) {
-          closeModal();
-        }
+        const noticeModal = document.getElementById("noticeModal");
+        if (noticeModal && event.target === noticeModal) {
+      noticeCloseModal();
+    }
       };
     
