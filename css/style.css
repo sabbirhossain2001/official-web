@@ -1770,11 +1770,11 @@ strong {
 
 .gallery-popup-close {
   position: absolute;
-  top: 15px;
+  top: 8px;
   right: 20px;
   font-size: 35px;
   font-weight: bold;
-  color: #333;
+  color: var(--primary-color);
   cursor: pointer;
   z-index: 10001;
 }
